@@ -1,0 +1,11 @@
+What have you learned?
+
+1. window 对象的一些高度属性
+window.scrollY      已经滚出去的高度
+window.innerHeight  前窗口可视高度
+
+2. 图片元素的一些高度属性
+image.offsetTop   图片到窗口可视区顶部
+image.heigh       图片的高度
+
+3. 一些计算高度的方法

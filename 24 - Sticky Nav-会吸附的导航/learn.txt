@@ -1,0 +1,9 @@
+what have you learn?
+
+1. window 的 scroll 事件
+
+2. window.scrollY 滚动卷去的距离
+
+3. document.body.style|classLists  给 body 设置样式
+
+4. css 粘性定位：position:stick; 会脱离文档流

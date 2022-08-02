@@ -1,0 +1,3 @@
+What have you learned?
+
+1. 使用 slice 数组截取方法，变相的实现删除数组中指定下标的元素

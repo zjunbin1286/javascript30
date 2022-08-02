@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Understanding JavaScript's Capture</title>
+  <style>
+    html {
+      box-sizing: border-box;
+    }
+    
+    *, *:before, *:after { 
+      box-sizing: inherit; 
+    }
+  
+    div {
+      width: 100%;
+      padding: 100px;
+    }
+  
+    .one {
+      background: thistle;
+    }
+  
+    .two {
+      background: mistyrose;
+    }
+  
+    .three {
+      background: coral;
+    }
+  </style>
+</head>
+<body class="bod">
+
+  <div class="one">
+    <div class="two">
+      <div class="three">
+      </div>
+    </div>
+  </div>
+
+
+
+<button></button>
+<script>
+
+// 事件冒泡和捕获，是指事件在元素上被触发的顺序，事件本身并不会传递
+// 事件的执行，必须有相应的动作来触发，触发的动作不会传递
+// 默认情况下，事件是冒泡传递机制
+
+const divs = document.querySelectorAll('div')
+
+function log(e) {
+  // 阻止事件传递
+  // capture 为 true 时，只会触发最外层
+  // capture 为 false 时，点哪里触发哪里
+  // e.stopPropagation()
+  console.log(this);
+}
+
+// addEventListener() 第三个参数个配置对象
+divs.forEach(div => div.addEventListener('click', log, {
+  // 开启事件捕获，默认为false（事件冒泡）
+  capture: true,
+  // 回调函数只允许被调用一次
+  once: true
+}))
+
+</script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+What have you learned?
+
+1. 是否按下了 shfit 键
+e.shiftKey
+
+2. checkbox 的妙用

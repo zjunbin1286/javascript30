@@ -1,0 +1,9 @@
+What have you learned?
+
+1. 一些数组的迭代api
+
+2. Array.prototype.reduce() 的其他妙用，可以为初始值设为 对象
+
+const res8 = data.reduce((obj, item) => {
+  return obj
+}, {})

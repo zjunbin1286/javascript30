@@ -1,0 +1,23 @@
+What have you learned?
+
+1. 音频的几种属性：
+paused：是否处于暂停状态
+currentTime：当前播放时长
+volume：播放音量
+playbackRate：播放速度
+duration：视频总时长
+
+2. 音频的几种方法：
+video.play()  播放
+video.pause()  暂停
+
+3. 音频的事件
+'timeupdate'  视频播放时间的更新事件
+
+4. 计算视频当前时长的百分比
+当前时长的百分比 = 当前视频时长 / 视频总时长
+const percent = (video.currentTime / video.duration) * 100 + '%'
+
+5. 计算视频当前时长
+视频当前时长 = (当前进度条的长度 / 进度条的总长度) * 视频总时长
+const screbTime = (e.offsetX / progress.offsetWidth) * video.duration

@@ -1,0 +1,6 @@
+What have you learned?
+
+1. getBoundingClientRect() 获取元素的尺寸和相对于视图窗口的位置数据
+
+
+ 

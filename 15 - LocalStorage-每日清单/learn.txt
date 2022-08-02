@@ -1,0 +1,13 @@
+What have you learned?
+
+1. 阻止表单的默认行为、submit 事件、reset 方法
+
+2. JSON.parse() 、JSON.strify() 方法
+
+3. 数据永久存储方案：本地存储，window.localStorage 的 getItem()、setItem() 方法
+
+4. 标签自定义属性的妙用
+
+5. 事件委派
+
+ 

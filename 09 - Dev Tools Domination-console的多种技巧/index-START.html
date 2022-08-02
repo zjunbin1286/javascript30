@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Console Tricks!</title>
+</head>
+<body>
+
+  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+  <script>
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+
+    function makeGreen() {
+      const p = document.querySelector('p');
+      p.style.color = '#BADA55';
+      p.style.fontSize = '50px';
+    }
+
+    // Regular log
+    console.log('最常用的输出');
+
+    // Interpolated 插值
+    console.log('Hi, my name is %s', 'coderbin')
+
+    // Styled 控制输出的样式
+    console.log('%c styled texts', 'font-size:30px;color:red;');
+
+    // warning! 警告
+    console.warn('这是个警告消息');
+
+    // Error :| 报错
+    console.error('这是个错误消息');
+
+    // Info 消息
+    console.info('一个简单的消息')
+
+    // Testing 测试，断言
+    console.assert(1===2, 'That is Wrong!')
+    const p = document.querySelector('p')
+    console.assert(p.classList.contains('hl'), 'That is Wrong!')
+
+    // clearing 清空控制台
+    // console.clear();
+
+    // Viewing DOM Elements 查看DOM元素
+    console.log(p);
+    console.log([p]);
+    console.dir(p);
+
+    // Grouping together 分组
+    dogs.forEach(dog => {
+      console.group(`${dog.name}`)
+      console.log(`This is ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age} years old`);
+      console.log(`${dog.name} is ${dog.age * 4} years old`);
+      console.groupEnd(`${dog.name}`)
+    })
+
+    // counting 计数
+    console.count('Hi')
+    console.count('Hi')
+    console.count('Hi')
+
+    // time 计时，比如函数执行的时间
+    console.time('fetching data')
+    // 获取数据
+    // fetch('https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json')
+    //   .then(res=>res.json())
+    //   .then(data => {
+    //     console.timeEnd('fetching data')
+    //     console.log(data);
+    //   })
+
+    // table 按表格形式输出数据
+    console.table(dogs)
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+What have you learned?
+
+1. 动画属性：
+transform、
+transform-origin、
+transition-timing-function
+
+2. 对当前时间，秒、分、时的处理

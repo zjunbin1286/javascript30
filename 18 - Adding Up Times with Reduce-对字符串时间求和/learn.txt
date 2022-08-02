@@ -1,0 +1,11 @@
+What have you learned?
+
+1. 如何获取属性值的分秒，转换成总秒数
+
+2. map(parseFloat) 是  map(value => parseFloat(value) 的简写形式)
+会将每次拿到的值放到 parseFloat(value) 中进行转换
+
+3. 将总秒数转换成为时分秒
+
+
+ 

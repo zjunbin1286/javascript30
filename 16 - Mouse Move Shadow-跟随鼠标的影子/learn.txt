@@ -1,0 +1,10 @@
+What have you learned?
+
+1. Math.round() 四舍五入
+
+2. textShadow 的使用
+10px 10px 1px rgba(112, 176, 112)
+x轴距离 y轴距离 阴影模糊程度 阴影颜色
+
+
+ 

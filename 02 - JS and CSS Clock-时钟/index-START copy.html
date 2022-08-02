@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS + CSS Clock</title>
+  <style>
+    html {
+      background: #018DED url(./bg.jpg);
+      background-size: cover;
+      font-family: 'helvetica neue';
+      text-align: center;
+      font-size: 10px;
+    }
+    body {
+      margin: 0;
+      font-size: 2rem;
+      display: flex;
+      flex: 1;
+      min-height: 100vh;
+      align-items: center;
+    }
+    .clock {
+      width: 40rem;
+      height: 40rem;
+      border: 20px solid white;
+      border-radius: 50%;
+      margin: 50px auto;
+      position: relative;
+      padding: 2rem;
+      box-shadow:
+        0 0 0 4px rgba(0,0,0,0.1),
+        inset 0 0 0 3px #EFEFEF,
+        inset 0 0 10px black,
+        0 0 10px rgba(0,0,0,0.2);
+    }
+    .clock-face {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform: translateY(-3px); /* account for the height of the clock hands */
+    }
+    .hand {
+      width: 50%;
+      height: 6px;
+      background: black;
+      position: absolute;
+      top: 50%;
+
+      transition: all 0.05s;
+      transform: rotate(90deg);
+      transform-origin: 100%;
+      transition-timing-function: cubic-bezier(0.1,2.7,0.58,1);
+    }
+    .hour-hand {
+      background: lightcoral;
+    }
+    .min-hand {
+      background: yellow;
+
+    }
+    .second-hand {
+      background: black;
+
+    }
+  </style>
+</head>
+<body>
+
+    <div class="clock">
+      <div class="clock-face">
+        <div class="hand hour-hand"></div>
+        <div class="hand min-hand"></div>
+        <div class="hand second-hand"></div>
+      </div>
+    </div>
+
+  <script>
+    let secondsHand = document.querySelector('.second-hand')
+    let minsHand = document.querySelector('.min-hand')
+    let hoursHand = document.querySelector('.hour-hand')
+
+    function setDate() {
+      const now = new Date()
+      
+      let seconds = now.getSeconds()
+      // 一圈360度，60秒，即一秒 6度 + 90
+      let secondsDeg = seconds * 6 + 90
+      secondsHand.style.transform = `rotate(${secondsDeg}deg)`
+
+      let mins = now.getMinutes()
+      // 一圈360度，60分钟，即一分钟 6度，秒钟转为分钟 * 60 + 90
+      let minsDeg = (mins * 6) + ((seconds/60)*6) + 90
+      minsHand.style.transform = `rotate(${minsDeg}deg)`
+
+      let hours = now.getHours()
+      // 一圈360度，12小时，即一小时30度，分转小时 * 30 + 秒转小时 * 30 + 90
+      let hoursDeg = (hours * 30) + ((mins/60)*30) + ((seconds/3600)*30) + 90
+      hoursHand.style.transform = `rotate(${hoursDeg}deg)`
+    }
+
+    setInterval(setDate, 1000)
+    setDate()
+
+  </script>
+</body>
+</html> 

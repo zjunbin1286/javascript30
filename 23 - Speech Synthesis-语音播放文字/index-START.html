@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Speech Synthesis</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="voiceinator">
+
+      <h1>The Voiceinator 5000</h1>
+
+      <select name="voice" id="voices">
+        <option value="">Select A Voice</option>
+      </select>
+
+      <label for="rate">语速:</label>
+      <input name="rate" type="range" min="0" max="3" value="1" step="0.1">
+
+      <label for="pitch">音高:</label>
+
+      <input name="pitch" type="range" min="0" max="2" step="0.1">
+      <textarea name="text">CoderBin is so genius！</textarea>
+      <button id="stop">停止</button>
+      <button id="speak">开始</button>
+
+    </div>
+
+<script>
+  // 获取语音播放的配置信息实例对象
+  const msg = new SpeechSynthesisUtterance();
+  let voices = [];  // 语音引擎列表
+  const voicesDropdown = document.querySelector('[name="voice"]');
+  const options = document.querySelectorAll('[type="range"], [name="text"]');
+  const speakButton = document.querySelector('#speak'); // 开始按钮
+  const stopButton = document.querySelector('#stop'); // 停止按钮
+
+
+  // 将文本的值给 msg.text，用于播放的文本
+  msg.text = document.querySelector('[name="text"]').value
+
+  // 播放、暂停
+  function toggle(startSpeak = true) {
+    // speechSynthesis 全局的一个 "语音包" 对象，用来实现播放、暂停等功能
+    if (startSpeak) {
+      speechSynthesis.speak(msg)
+    } else {
+      speechSynthesis.cancel(msg)
+    }
+  }
+
+  // 获取设备支持的语音引擎的种类
+  function showVoices() {
+    voices = this.getVoices()
+    const optionHTML = voices.map(voice => {
+      return `
+        <option value='${voice.lang}'>${voice.name}(${voice.lang})</option>
+      `
+    }).join('')
+    voicesDropdown.innerHTML = optionHTML
+  }
+
+  // 改变语音引擎
+  function setVoice() {
+    // 从语音引擎数组中找到当前选择的语音，然后赋值给 msg.voice
+    msg.voice = voices.find(voice => voice.lang === this.value)
+    toggle()
+  }
+
+  // 改变音速、音高
+  function setOption() {
+    msg[this.name] = this.value
+    toggle()
+  }
+
+  speakButton.addEventListener('click', toggle) // 开始按钮的点击事件
+  stopButton.addEventListener('click', () => toggle(false)) // 停止按钮的点击事件
+  speechSynthesis.addEventListener('voiceschanged', showVoices) // 语音引擎改变事件，的时候调用一次
+  voicesDropdown.addEventListener('change', setVoice) // 下拉框的改变事件
+  options.forEach(option => option.addEventListener('change', setOption));
+</script>
+
+</body>
+</html>

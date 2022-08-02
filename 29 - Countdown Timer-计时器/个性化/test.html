@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+  </style>
+</head>
+<body>
+  <button class="start">秒表 ▶</button>
+  <button class="reset">重置</button>
+  <h1 class="time">00:00:00.00</h1>
+
+  <script>
+    const startBtn = document.querySelector('.start')
+    const resetBtn = document.querySelector('.reset')
+    const h3 = document.querySelector('.time')
+
+    let token
+    let mill= seconds = mins = hour = 0;
+
+    let flag = false
+
+    // 开始/暂停
+    function start() {
+      clearInterval(token)
+      flag = !flag
+      if (flag) {
+        timer()
+        startBtn.innerText = '秒表 ❚❚'
+      } else {
+        clearInterval(token)
+        startBtn.innerText = '秒表 ▶'
+      }
+    }
+
+    // 计时器
+    function timer() {
+      let text = ''
+      // 计时器
+      token = setInterval(() => {
+        mill += 1;
+        if (mill > 99) {
+          mill = 0
+          seconds += 1
+          if (seconds > 59) {
+            seconds = 0
+            mins += 1
+            if (mins >60) {
+              mins = 0
+              hour += 1
+            }
+          }
+        }
+        let hourT = hour <10 ? '0'+ hour :  hour
+        let minsT = mins <10 ? '0'+ mins : mins
+        let secondsT = seconds <10 ? '0'+ seconds :  seconds
+        let millT = mill <10 ? '0'+ mill :  mill
+        text = `${hourT}:${minsT}:${secondsT}.${millT}`
+        h3.textContent = text
+      }, 10)
+    }
+
+    // 重置
+    function reset() {
+      clearInterval(token)
+      // 设置为初始状态
+      flag = false
+      h3.textContent = '00:00:00.00'
+      startBtn.innerText = '秒表 ▶'
+      mill= seconds = mins = hour = 0;
+    }
+
+    startBtn.addEventListener('click', start)
+    resetBtn.addEventListener('click', reset)
+  </script>
+</body>
+</html>

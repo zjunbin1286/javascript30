@@ -1,0 +1,3 @@
+What have you learned?
+
+1. console 的各种输出用法

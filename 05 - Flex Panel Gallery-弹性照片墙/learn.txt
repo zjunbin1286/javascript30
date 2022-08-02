@@ -1,0 +1,7 @@
+What have you learned?
+
+1. flex 布局的使用
+
+2. classList.toggle() 的使用
+
+3. 可以根据 e.propertyName 判断某个 transition 值

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scoped CSS Variables and JS</title>
+  <style>
+
+    /*
+      misc styles, nothing to do with CSS variables
+    */
+    :root {
+      --spacing: 2px;
+      --blur: 0px;
+      --base: #ffc600;
+    }
+    body {
+      text-align: center;
+      background: #193549;
+      color: white;
+      font-family: 'helvetica neue', sans-serif;
+      font-weight: 100;
+      font-size: 50px;
+    }
+
+    .controls {
+      margin-bottom: 50px;
+    }
+
+    input {
+      width: 100px;
+    }
+
+    img {
+      padding: var(--spacing);
+      filter:blur(var(--blur));
+      background: var(--base);
+    }
+    .hl {
+      color: var(--base);
+    }
+  </style>
+</head>
+<body>
+  <h2>Update CSS Variables with <span class='hl'>JS</span></h2>
+
+  <div class="controls">
+    <label for="spacing">Spacing:</label>
+    <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
+
+    <label for="blur">Blur:</label>
+    <input id="blur" type="range" name="blur" min="0" max="25" value="0" data-sizing="px">
+
+    <label for="base">Base Color</label>
+    <input id="base" type="color" name="base" value="#ffc600">
+  </div>
+
+  <img src="./photo.jpg">
+
+
+
+  <script>
+    // 获取所有 input 元素
+    const inputs = document.querySelectorAll('.controls input');
+
+
+    function update() {
+      // 获取自定义属性，方便给数值添加单位
+      const suffix = this.dataset.sizing || ''
+      // 设置给全局的样式属性，其实是改变全局 css 变量的值： setProperty(变量名, 值)
+      document.documentElement.style.setProperty(`--${this.name}`, this.value+suffix)
+    }
+
+    // 监听 input 的 change 事件
+    inputs.forEach(input => input.addEventListener('change', update))
+    // 监听 input 的 mousemove 事件
+    inputs.forEach(input => input.addEventListener('mousemove', update));
+
+  </script>
+
+</body>
+</html>

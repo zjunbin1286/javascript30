@@ -1,0 +1,9 @@
+What have you learned?
+
+1. css 的全局变量
+
+2. 标签的自定义属性可以通过 dataset 获取
+
+3. 通过 document.documentElement.style.setProperty() 改变全局属性
+
+4. input 标签的 change、mousemove 事件

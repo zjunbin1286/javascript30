@@ -1,0 +1,7 @@
+What have you learned?
+
+1. e.key 可以获取按下的键盘字母 
+
+2. 数组的 splice 截取方法
+
+3. 对数组使用 join('') 转成文字

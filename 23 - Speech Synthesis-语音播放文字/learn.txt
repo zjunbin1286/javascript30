@@ -1,0 +1,6 @@
+what have you learn?
+
+1. new SpeechSynthesisUtterance()
+获取语音播放的配置信息实例对象
+
+2. speechSynthesis 全局的一个 "语音包" 对象，用来实现播放、暂停等功能
