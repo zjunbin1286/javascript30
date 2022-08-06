@@ -67,15 +67,15 @@
       images.forEach(image => {
         // 滚动总长度 = 已经滚出去的高度 + 当前窗口可视高度
         const scrolled = window.scrollY + window.innerHeight;
-        // 图片中部到顶部的长度 = 图片到窗口可视区顶部 + 图片高度的一半
+        // 图片中部到顶部的长度 = 图片到顶部(包括已经滚出去的高度) + 图片高度的一半
         const imageHalf = image.offsetTop + (image.height / 2)
-        // 图片底部到顶部的长度 = 图片到窗口可视区顶部 + 图片高度
-        const imageButton = image.offsetTop + image.height
+        // 图片底部到顶部的长度 = 图片到顶部(包括已经滚出去的高度) + 图片高度
+        const imageButtom = image.offsetTop + image.height
 
         // 图片是否出现一半 = 滚动总长度  > imageHalf
         const isHalfShown = scrolled > imageHalf;
-        // 图片是否没有滚出可视区 = 已经滚出去的高度 < imageButton
-        const isNotScrollPast = window.scrollY < imageButton; 
+        // 图片是否没有滚出可视区(还能看到图片) = 已经滚出去的高度 < imageButtom
+        const isNotScrollPast = window.scrollY < imageButtom; 
 
         // 判断是否符合两种要求，是则添加 active 类，否则移除
         if (isHalfShown && isNotScrollPast) {
